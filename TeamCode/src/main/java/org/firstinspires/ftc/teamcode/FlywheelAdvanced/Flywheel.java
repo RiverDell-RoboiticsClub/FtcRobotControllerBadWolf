@@ -15,11 +15,15 @@ public class Flywheel {
 
     //Clicks per rotation on encoder
     private double encoderCPM = 28; //change depending on motor later
-    private double gearRatio = 1; //change depending on actual gearratio for badwolf
+    private double gearRatio = 5; //change depending on actual gearratio for badwolf
 
     //velocity feed forward constant, static friction, and proportional constant
-    private double kV, kS, kP; //will tune later -> after tuning set each value equal to the tuned value
-    private double kV2, kS2, kP2;
+    private double kV = 0;
+    private double kS = 0;
+    private double kP = 0; //will tune later -> after tuning set each value equal to the tuned value
+    private double kV2 = 0;
+    private double kS2 = 0;
+    private double kP2 = 0;
 
 
     //initialize motors again
@@ -45,7 +49,7 @@ public class Flywheel {
         if (motor == nectarFlywheel) {
             v = kV;
             s = kS;
-            p = kV;
+            p = kP;
         }
 
         if (motor == pollenFlywheel) {
