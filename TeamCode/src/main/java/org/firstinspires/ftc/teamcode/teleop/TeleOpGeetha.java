@@ -4,8 +4,7 @@ package org.firstinspires.ftc.teamcode.teleop;
 //This is to import the teleop and opMode stuff
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-
-import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
+//hlo
 import static org.firstinspires.ftc.teamcode.MyTeamUtil.drive;
 import static org.firstinspires.ftc.teamcode.MyTeamUtil.move_servos;
 

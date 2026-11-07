@@ -46,7 +46,7 @@ public class Flywheel {
         setMotorPower(power, motor);
     }
 
-    //how fast we going
+    //how fast we going lj;lkj;lk
     public double getTicksPerSec(DcMotorEx motor) {
         return motor.getVelocity();
     };

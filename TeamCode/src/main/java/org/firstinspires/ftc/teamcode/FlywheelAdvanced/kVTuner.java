@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 initial starting point where we break over the amount of power needed, we're figuring
 out what is the power needed to send to the motor to be able to get it to consistently
 achieve 1500 RPM without proportionally controlling itself -> there's a min value
-or normal value that we send to motor, a normal voltage that holds it at goal RPM
+or normal value that we send to motor, a normal voltage that holds it at goal RPM ;lj;lj;lj;
  */
 public class kVTuner extends OpMode {
     Flywheel flywheel = new Flywheel();

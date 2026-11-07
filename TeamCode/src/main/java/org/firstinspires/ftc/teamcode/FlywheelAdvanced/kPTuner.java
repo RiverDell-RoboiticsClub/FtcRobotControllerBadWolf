@@ -35,7 +35,7 @@ public class kPTuner extends OpMode {
         if (gamepad1.a) {
             goalRPM = 1500;
         } else if (gamepad1.b) {
-            goalRPM = 800; //example to show that things can scale
+            goalRPM = 800; //example to show that things can scale lkjhljh
         }
 
         double currentStep = increments[incrementIdx];
