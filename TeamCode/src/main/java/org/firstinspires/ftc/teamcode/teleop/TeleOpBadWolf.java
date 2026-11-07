@@ -119,16 +119,16 @@ public class TeleOpBadWolf extends LinearOpMode {
                 move_servos(flower_servos);
             }
             if (gamepad2.x) {
-                nectarFlywheel.setVelocity(-2000);
-                nectarGate.setPosition(-1);
+                nectarFlywheel.setVelocity(2000);
+                nectarGate.setPosition(0);
             } else if (!gamepad2.x) {
                 nectarFlywheel.setVelocity(0);
                 nectarGate.setPosition(0.5);
             }
             //h
             if (gamepad2.y) {
-                pollenFlywheel.setVelocity(-2000);
-                pollenGate.setPosition(-1);
+                pollenFlywheel.setVelocity(2000);
+                pollenGate.setPosition(0);
             } else if (!gamepad2.y) {
                 pollenFlywheel.setVelocity(0);
                 pollenGate.setPosition(0.5);
