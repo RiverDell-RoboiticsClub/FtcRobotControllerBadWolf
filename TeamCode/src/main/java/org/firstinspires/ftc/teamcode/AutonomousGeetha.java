@@ -54,9 +54,6 @@ public class AutonomousGeetha extends LinearOpMode {
         flower_servos.add(flowerServo1);
         flower_servos.add(flowerServo2);
 
-        robot_position.add(9.0);
-        robot_position.add(104.0);
-
         // Wait for driver to press start
         telemetry.addData(">", "Touch Play to run Auto");
         telemetry.update();
@@ -65,16 +62,7 @@ public class AutonomousGeetha extends LinearOpMode {
 
         // Run Auto if stop was not pressed.
         if (opModeIsActive()) {
-            Timer timer = new Timer();
-            TimerTask task = new TimerTask() {
-                @Override
-                public void run() {
-                    drive(0, 0, 0, wheel_motors);
-                    timer.cancel();
-                }
-            };
-            drive(0, 1, 0, wheel_motors);
-            timer.schedule(task, 50000);
+            drive(0, 0.1, 0, wheel_motors);
         }
     }
 }
