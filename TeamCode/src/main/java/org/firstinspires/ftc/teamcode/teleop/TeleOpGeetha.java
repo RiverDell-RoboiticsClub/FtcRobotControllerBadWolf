@@ -97,9 +97,9 @@ public class TeleOpGeetha extends LinearOpMode {
 
             boolean lastAButton = currentAButton;
             currentAButton = gamepad1.a;
-            if (gamepad2.b) {
+            if (gamepad1.right_trigger_pressed) {
                 intakeMotor.setPower(1);
-            } else if (!gamepad2.b) {
+            } else if (!gamepad1.right_trigger_pressed) {
                 intakeMotor.setPower(0);
             }
             if (!currentAButton && lastAButton) {
