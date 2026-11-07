@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 /* What this testing process does is basically rather than getting until we have
 initial starting point where we break over the amount of power needed, we're figuring
-out what is the power needed to send to the motor to be able to get it to consistently
+out what is the power needed to send toa the motor to be able to get it to consistently
 achieve 1500 RPM without proportionally controlling itself -> there's a min value
 or normal value that we send to motor, a normal voltage that holds it at goal RPM ;lj;lj;lj;
  */
