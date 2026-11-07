@@ -77,7 +77,7 @@ public class TeleOpBadWolf extends LinearOpMode {
         pollenFlywheel.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         //This is setting the directions for the spinning of the motors (the reverse is because of some weird meca wheel stuff)
-        frontLeftMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+        frontLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         backLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         backRightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
         frontRightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
