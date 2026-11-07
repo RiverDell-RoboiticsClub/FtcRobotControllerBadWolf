@@ -51,7 +51,7 @@ public class kPTuner extends OpMode {
         flywheel.setMotorPower(feedForward + feedBack, flywheel.nectarFlywheel);
 
         telemetry.addData("Step", "%.6f", currentStep);
-        telemetry.addData("kV", "%.6f", kP);
+        telemetry.addData("kP", "%.6f", kP);
         telemetry.addData("Error", error);
         telemetry.addData("RPM", flywheel.getRPM(flywheel.nectarFlywheel));
     }
