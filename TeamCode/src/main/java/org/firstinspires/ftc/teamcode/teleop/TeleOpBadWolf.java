@@ -36,6 +36,7 @@ public class TeleOpBadWolf extends LinearOpMode {
     private Servo pollenGate;
     private Servo nectarHood;
     private Servo pollenHood;
+    private DcMotor transferMotor;
 
 
     private boolean currentAButton = false;
@@ -61,8 +62,13 @@ public class TeleOpBadWolf extends LinearOpMode {
         nectarHood = hardwareMap.get(Servo.class, "nectarHood");
         pollenHood = hardwareMap.get(Servo.class, "nectarHood");
 
+        transferMotor = hardwareMap.get(DcMotor.class, "transferMotor");
+
         nectarFlywheel = hardwareMap.get(DcMotorEx.class, "flywheel_motor_nectar");
         pollenFlywheel = hardwareMap.get(DcMotorEx.class, "flywheel_motor_pollen");
+
+        nectarGate = hardwareMap.get(Servo.class, "gate_nectar");
+        pollenGate = hardwareMap.get(Servo.class, "gate_pollen");
         //Because we're building custom loop, we don't want encoder.
         //This allows us to still read the motor encoder, but no run at speed it wants
         nectarFlywheel.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
@@ -70,8 +76,9 @@ public class TeleOpBadWolf extends LinearOpMode {
 
         //This is setting the directions for the spinning of the motors (the reverse is because of some weird meca wheel stuff)
         frontLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-        backLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-        backRightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+        backLeftMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+        backRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        frontRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
         wheel_motors.add(frontLeftMotor);
         wheel_motors.add(backLeftMotor);
@@ -97,23 +104,30 @@ public class TeleOpBadWolf extends LinearOpMode {
 
             boolean lastAButton = currentAButton;
             currentAButton = gamepad1.a;
+
             if (gamepad1.right_trigger_pressed) {
                 intakeMotor.setPower(1);
+                transferMotor.setPower(1);
             } else if (!gamepad1.right_trigger_pressed) {
                 intakeMotor.setPower(0);
+                transferMotor.setPower(0);
             }
             if (!currentAButton && lastAButton) {
                 move_servos(flower_servos);
             }
             if (gamepad2.x) {
-                flywheel.setMotorRPM(1500, nectarFlywheel);
+                nectarFlywheel.setVelocity(2000);
+                nectarGate.setPosition(1);
             } else if (!gamepad2.x) {
-                flywheel.setMotorPower(0, nectarFlywheel);
+                nectarFlywheel.setVelocity(0);
+                nectarGate.setPosition(0.5);
             }
             if (gamepad2.y) {
-                flywheel.setMotorRPM(1500, pollenFlywheel);
+                pollenFlywheel.setVelocity(2000);
+                pollenGate.setPosition(1);
             } else if (!gamepad2.y) {
-                flywheel.setMotorPower(0, pollenFlywheel);
+                pollenFlywheel.setVelocity(0);
+                pollenGate.setPosition(0.5);
             }
             if (gamepad2.left_stick_y > 0 && gamepad2.left_stick_y < 1) {
                 pollenHood.setPosition(pollenHood.getPosition() + 0.05);

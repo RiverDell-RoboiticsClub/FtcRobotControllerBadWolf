@@ -21,23 +21,23 @@ public class Tuning {
     //Automatic pinpoint tuning
     //https://pedropathing.com/docs/pathing/tuning/localization/pinpoint
 
-    /*@Tuner
+    @Tuner
     public static Procedure pinpointTuner() {
         return new PinpointTuner();
-    }*/
+    }
 
     //for two wheel
     //https://pedropathing.com/docs/pathing/tuning/localization/two-wheel
 
-    /*@Tuner
+    @Tuner
     public static Procedure twoWheelTuner() {
         return new TwoWheelTuner();
-    }*/
+    }
 
     //Automatic Foresight Tuning (LAST)
     //https://pedropathing.com/docs/pathing/tuning/foresight
-    /*@Tuner
+    @Tuner
     public static Procedure foresightTuner() {
         return new ForesightTuner((hardwareMap) -> new PinpointLocalizer(hardwareMap, Constants.localizerConfig), (hardwareMap) -> new Mecanum(hardwareMap, Constants.drivetrainConfig));
-    }*/
+    }
 }

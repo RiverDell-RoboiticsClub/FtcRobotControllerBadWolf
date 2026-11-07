@@ -8,6 +8,7 @@ out what is the power needed to send to the motor to be able to get it to consis
 achieve 1500 RPM without proportionally controlling itself -> there's a min value
 or normal value that we send to motor, a normal voltage that holds it at goal RPM
  */
+
 public class kP2Tuner extends OpMode {
     Flywheel flywheel = new Flywheel();
     public static double kV2 = 0.01;
