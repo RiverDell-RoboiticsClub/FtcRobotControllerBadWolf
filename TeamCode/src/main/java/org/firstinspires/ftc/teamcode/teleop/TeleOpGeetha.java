@@ -5,12 +5,16 @@ package org.firstinspires.ftc.teamcode.teleop;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
 import static org.firstinspires.ftc.teamcode.MyTeamUtil.drive;
 import static org.firstinspires.ftc.teamcode.MyTeamUtil.move_servos;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
+
+import org.firstinspires.ftc.teamcode.FlywheelAdvanced.Flywheel;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -27,8 +31,8 @@ public class TeleOpGeetha extends LinearOpMode {
     private DcMotor intakeMotor;
     private Servo flowerServo1;
     private Servo flowerServo2;
-    private DcMotor nectarFlywheelMotor;
-    private DcMotor pollenFlywheelMotor;
+    private DcMotorEx nectarFlywheel;
+    private DcMotorEx pollenFlywheel;
     private Servo nectarGate;
     private Servo pollenGate;
     private Servo nectarHood;
@@ -39,6 +43,7 @@ public class TeleOpGeetha extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
+        Flywheel flywheel = new Flywheel();
 
         //All the variables I set aside for motors and made empty I am now actually assigning the motors from the hardware map (this stores all the actual motors of the robot)
         frontLeftMotor = hardwareMap.get(DcMotor.class, "frontLeft");
@@ -51,20 +56,22 @@ public class TeleOpGeetha extends LinearOpMode {
         flowerServo1 = hardwareMap.get(Servo.class, "flower_servo_1");
         flowerServo2 = hardwareMap.get(Servo.class, "flower_servo_2");
 
-
-        nectarFlywheelMotor = hardwareMap.get(DcMotor.class, "nectarShooter");
-        pollenFlywheelMotor = hardwareMap.get(DcMotor.class, "pollenShooter");
-
-        nectarGate = hardwareMap.get(Servo.class, "nectarGate");
-        pollenGate = hardwareMap.get(Servo.class, "pollenGate");
+        nectarGate = hardwareMap.get(Servo.class, "gate_nectar");
+        pollenGate = hardwareMap.get(Servo.class, "gate_pollen");
 
         nectarHood = hardwareMap.get(Servo.class, "nectarHood");
         pollenHood = hardwareMap.get(Servo.class, "nectarHood");
 
+        nectarFlywheel = hardwareMap.get(DcMotorEx.class, "flywheel_motor_nectar");
+        pollenFlywheel = hardwareMap.get(DcMotorEx.class, "flywheel_motor_pollen");
+        //Because we're building custom loop, we don't want encoder.
+        //This allows us to still read the motor encoder, but no run at speed it wants
+        nectarFlywheel.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        pollenFlywheel.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
         //This is setting the directions for the spinning of the motors (the reverse is because of some weird meca wheel stuff)
         frontLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         backLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-        frontRightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
         backRightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
 
         wheel_motors.add(frontLeftMotor);
@@ -100,14 +107,14 @@ public class TeleOpGeetha extends LinearOpMode {
                 move_servos(flower_servos);
             }
             if (gamepad2.x) {
-                nectarFlywheelMotor.setPower(1);
+                flywheel.setMotorRPM(1500, nectarFlywheel);
             } else if (!gamepad2.x) {
-                nectarFlywheelMotor.setPower(0);
+                flywheel.setMotorPower(0, nectarFlywheel);
             }
             if (gamepad2.y) {
-                pollenFlywheelMotor.setPower(1);
+                flywheel.setMotorRPM(1500, pollenFlywheel);
             } else if (!gamepad2.y) {
-                pollenFlywheelMotor.setPower(0);
+                flywheel.setMotorPower(0, pollenFlywheel);
             }
             if (gamepad2.left_stick_y > 0 && gamepad2.left_stick_y < 1) {
                 pollenHood.setPosition(pollenHood.getPosition() + 0.05);
@@ -118,6 +125,8 @@ public class TeleOpGeetha extends LinearOpMode {
                 nectarHood.setPosition(nectarHood.getPosition() + 0.05);
             } else if (gamepad2.left_stick_y < 0 && gamepad2.left_stick_y > 0.5) {
                 nectarHood.setPosition(nectarHood.getPosition() - 0.005);
-            }        }
+            }
+
+        }
     }
 }
