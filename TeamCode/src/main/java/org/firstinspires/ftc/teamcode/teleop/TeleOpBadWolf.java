@@ -77,10 +77,10 @@ public class TeleOpBadWolf extends LinearOpMode {
         nectarFlywheel.setDirection(DcMotorEx.Direction.REVERSE);
 
         //This is setting the directions for the spinning of the motors (the reverse is because of some weird meca wheel stuff)
-        frontLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-        backLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-        backRightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
-        frontRightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+        frontLeftMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+        backLeftMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+        backRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        frontRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
         wheel_motors.add(frontLeftMotor);
         wheel_motors.add(backLeftMotor);

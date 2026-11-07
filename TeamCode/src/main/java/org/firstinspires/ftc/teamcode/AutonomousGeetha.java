@@ -41,10 +41,10 @@ public class AutonomousGeetha extends LinearOpMode {
         flowerServo1 = hardwareMap.get(Servo.class, "flower_servo_1");
         flowerServo2 = hardwareMap.get(Servo.class, "flower_servo_2");
 
-        frontLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-        backLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-        frontRightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
-        backRightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+        frontLeftMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+        backLeftMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+        frontRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        backRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
         wheel_motors.add(frontLeftMotor);
         wheel_motors.add(backLeftMotor);
