@@ -87,6 +87,7 @@ public class MyTeamUtil {
         drive(0, 0, 0, wheels);
     }
      */
+    //hello
     static public void move_servos(List<Servo> flowers) {
         if (flowers.get(0).getPosition() == 1 && flowers.get(1).getPosition() == 1) {
             flowers.get(0).setPosition(0);
