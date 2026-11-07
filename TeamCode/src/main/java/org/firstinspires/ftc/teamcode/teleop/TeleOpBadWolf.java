@@ -45,8 +45,6 @@ public class TeleOpBadWolf extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
-        Flywheel flywheel = new Flywheel();
-
         //All the variables I set aside for motors and made empty I am now actually assigning the motors from the hardware map (this stores all the actual motors of the robot)
         frontLeftMotor = hardwareMap.get(DcMotor.class, "frontLeft");
         backLeftMotor = hardwareMap.get(DcMotor.class, "backLeft");
@@ -121,15 +119,15 @@ public class TeleOpBadWolf extends LinearOpMode {
                 move_servos(flower_servos);
             }
             if (gamepad2.x) {
-                nectarFlywheel.setVelocity(2000);
-                nectarGate.setPosition(1);
+                nectarFlywheel.setVelocity(-2000);
+                nectarGate.setPosition(-1);
             } else if (!gamepad2.x) {
                 nectarFlywheel.setVelocity(0);
                 nectarGate.setPosition(0.5);
             }
             if (gamepad2.y) {
-                pollenFlywheel.setVelocity(2000);
-                pollenGate.setPosition(1);
+                pollenFlywheel.setVelocity(-2000);
+                pollenGate.setPosition(-1);
             } else if (!gamepad2.y) {
                 pollenFlywheel.setVelocity(0);
                 pollenGate.setPosition(0.5);
