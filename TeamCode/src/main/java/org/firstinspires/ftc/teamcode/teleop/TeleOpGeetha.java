@@ -51,11 +51,11 @@ public class TeleOpGeetha extends LinearOpMode {
         flowerServo2 = hardwareMap.get(Servo.class, "flower_servo_2");
 
 
-        nectarFlywheelMotor = hardwareMap.get(DcMotor.class, "flywheel_motor_nectar");
-        pollenFlywheelMotor = hardwareMap.get(DcMotor.class, "flywheel_motor_pollen");
+        nectarFlywheelMotor = hardwareMap.get(DcMotor.class, "nectarShooter");
+        pollenFlywheelMotor = hardwareMap.get(DcMotor.class, "pollenShooter");
 
-        nectarGate = hardwareMap.get(Servo.class, "gate_nectar");
-        pollenGate = hardwareMap.get(Servo.class, "gate_pollen");
+        nectarGate = hardwareMap.get(Servo.class, "nectarGate");
+        pollenGate = hardwareMap.get(Servo.class, "pollenGate");
 
         nectarHood = hardwareMap.get(Servo.class, "nectarHood");
         pollenHood = hardwareMap.get(Servo.class, "nectarHood");
