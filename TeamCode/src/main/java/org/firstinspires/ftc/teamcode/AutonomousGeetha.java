@@ -74,7 +74,7 @@ public class AutonomousGeetha extends LinearOpMode {
                 }
             };
             drive(0, 1, 0, wheel_motors);
-            timer.schedule(task, 2000);
+            timer.schedule(task, 50000);
         }
     }
 }

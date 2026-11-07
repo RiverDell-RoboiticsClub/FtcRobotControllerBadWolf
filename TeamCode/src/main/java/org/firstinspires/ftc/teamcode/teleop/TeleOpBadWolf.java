@@ -13,8 +13,6 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
-import org.firstinspires.ftc.teamcode.FlywheelAdvanced.Flywheel;
-
 import java.util.List;
 import java.util.ArrayList;
 
@@ -75,6 +73,9 @@ public class TeleOpBadWolf extends LinearOpMode {
         nectarFlywheel.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         pollenFlywheel.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
+        pollenFlywheel.setDirection(DcMotorEx.Direction.REVERSE);
+        nectarFlywheel.setDirection(DcMotorEx.Direction.REVERSE);
+
         //This is setting the directions for the spinning of the motors (the reverse is because of some weird meca wheel stuff)
         frontLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         backLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -121,18 +122,18 @@ public class TeleOpBadWolf extends LinearOpMode {
             }
             if (gamepad2.x) {
                 nectarFlywheel.setVelocity(2000);
-                nectarGate.setPosition(0);
+                nectarGate.setPosition(0.5);
             } else if (!gamepad2.x) {
                 nectarFlywheel.setVelocity(0);
-                nectarGate.setPosition(0.5);
+                nectarGate.setPosition(0);
             }
             //h
             if (gamepad2.y) {
                 pollenFlywheel.setVelocity(2000);
-                pollenGate.setPosition(0);
+                pollenGate.setPosition(0.5);
             } else if (!gamepad2.y) {
                 pollenFlywheel.setVelocity(0);
-                pollenGate.setPosition(0.5);
+                pollenGate.setPosition(0);
             }
             if (gamepad2.left_stick_y > 0 && gamepad2.left_stick_y < 1) {
                 pollenHood.setPosition(pollenHood.getPosition() + 0.05);
@@ -151,7 +152,6 @@ public class TeleOpBadWolf extends LinearOpMode {
                     intakeMotor.setPower(0);
                 }
             }
-
         }
     }
 }
