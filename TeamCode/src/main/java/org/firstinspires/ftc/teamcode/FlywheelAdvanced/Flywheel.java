@@ -19,7 +19,7 @@ public class Flywheel {
 
     //velocity feed forward constant, static friction, and proportional constant
     private double kV, kS, kP; //will tune later -> after tuning set each value equal to the tuned value
-
+    private double kV2, kS2, kP2;
 
 
     //initialize motors again
@@ -33,15 +33,29 @@ public class Flywheel {
     }
 
     //tell our motors how fast to go:
-    public void setMotorPower(double power, DcMotor motor) {
+    public void setMotorPower(double power, DcMotorEx motor) {
         motor.setPower(power);
     }
 
     public void setMotorRPM(double targetRPM, DcMotorEx motor) {
-        //should call this every loop
+        double v = 0;
+        double s = 0;
+        double p = 0;
+
+        if (motor == nectarFlywheel) {
+            v = kV;
+            s = kS;
+            p = kV;
+        }
+
+        if (motor == pollenFlywheel) {
+            v = kV2;
+            s = kS2;
+            p = kP2;
+        }
         double error = targetRPM - getRPM(motor);
-        double ff = (kV * targetRPM) + kS; // feedforward
-        double fb = error * kP;
+        double ff = (v * targetRPM) + s; // feedforward
+        double fb = error * p;
         double power = ff + fb;
         setMotorPower(power, motor);
     }
@@ -49,7 +63,7 @@ public class Flywheel {
     //how fast we going lj;lkj;lk
     public double getTicksPerSec(DcMotorEx motor) {
         return motor.getVelocity();
-    };
+    }
 
     //calculating total RPM then ticks per second
     public double getRPM(DcMotorEx motor) {
