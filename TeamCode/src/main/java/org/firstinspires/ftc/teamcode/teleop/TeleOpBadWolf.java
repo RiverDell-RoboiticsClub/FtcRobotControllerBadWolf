@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 //hello
 @TeleOp
-public class TeleOpGeetha extends LinearOpMode {
+public class TeleOpBadWolf extends LinearOpMode {
     private List<DcMotor> wheel_motors = new ArrayList<>();
     private List<Servo> flower_servos = new ArrayList<>();
     private DcMotor frontLeftMotor;
