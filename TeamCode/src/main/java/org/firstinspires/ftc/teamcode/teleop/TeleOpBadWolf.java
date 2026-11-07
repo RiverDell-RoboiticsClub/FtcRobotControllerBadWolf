@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 //hello
-@TeleOp
+@TeleOp (name = "TeleOpBadWolf")
 public class TeleOpBadWolf extends LinearOpMode {
     private List<DcMotor> wheel_motors = new ArrayList<>();
     private List<Servo> flower_servos = new ArrayList<>();
@@ -77,10 +77,10 @@ public class TeleOpBadWolf extends LinearOpMode {
         pollenFlywheel.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         //This is setting the directions for the spinning of the motors (the reverse is because of some weird meca wheel stuff)
-        frontLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-        backLeftMotor.setDirection(DcMotorSimple.Direction.FORWARD);
-        backRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-        frontRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        frontLeftMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+        backLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        backRightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+        frontRightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
 
         wheel_motors.add(frontLeftMotor);
         wheel_motors.add(backLeftMotor);

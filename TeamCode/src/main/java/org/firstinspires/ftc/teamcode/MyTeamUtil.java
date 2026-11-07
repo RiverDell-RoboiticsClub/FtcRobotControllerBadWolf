@@ -25,10 +25,10 @@ public class MyTeamUtil {
 
     static public void drive(double direction_x, double direction_y, double spin, List<DcMotor> wheels) {
         List<Double> powers = new ArrayList<>();
-        powers.add(direction_y - direction_x + spin);
-        powers.add(direction_y + direction_x + spin);
         powers.add(direction_y + direction_x - spin);
         powers.add(direction_y - direction_x - spin);
+        powers.add(direction_y - direction_x + spin);
+        powers.add(direction_y + direction_x + spin);
         double max = Math.max(Math.abs(powers.get(0)), Math.abs(powers.get(1)));
         max = Math.max(max, Math.abs(powers.get(2)));
         max = Math.max(max, Math.abs(powers.get(3)));
