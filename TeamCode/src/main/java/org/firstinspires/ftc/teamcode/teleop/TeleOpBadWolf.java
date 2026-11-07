@@ -40,6 +40,8 @@ public class TeleOpBadWolf extends LinearOpMode {
 
 
     private boolean currentAButton = false;
+    private boolean intake_yes = false;
+    private boolean reverse_intake_yes = false;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -106,10 +108,13 @@ public class TeleOpBadWolf extends LinearOpMode {
             currentAButton = gamepad1.a;
 
             if (gamepad1.right_trigger_pressed) {
+                intake_yes = true;
                 intakeMotor.setPower(1);
                 transferMotor.setPower(1);
             } else if (!gamepad1.right_trigger_pressed) {
-                intakeMotor.setPower(0);
+                if (reverse_intake_yes == false) {
+                    intakeMotor.setPower(0);
+                }
                 transferMotor.setPower(0);
             }
             if (!currentAButton && lastAButton) {
@@ -138,6 +143,13 @@ public class TeleOpBadWolf extends LinearOpMode {
                 nectarHood.setPosition(nectarHood.getPosition() + 0.05);
             } else if (gamepad2.left_stick_y < 0 && gamepad2.left_stick_y > 0.5) {
                 nectarHood.setPosition(nectarHood.getPosition() - 0.005);
+            }
+            if (gamepad2.right_trigger_pressed) {
+                intakeMotor.setPower(-1);
+            } else if (!gamepad2.right_trigger_pressed) {
+                if (intake_yes == false) {
+                    intakeMotor.setPower(0);
+                }
             }
 
         }
